@@ -1,0 +1,31 @@
+rules_version = '2';
+
+// Firebase Storage Security Rules для dating app
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Правила для сообщений (фото и голосовые)
+    match /messages/{chatId}/{fileName} {
+      // Разрешить чтение всем аутентифицированным пользователям
+      allow read: if request.auth != null;
+      
+      // Разрешить запись только аутентифицированным пользователям
+      allow write: if request.auth != null
+                   && request.resource.size < 5 * 1024 * 1024 // Макс 5MB
+                   && (request.resource.contentType.matches('image/.*') 
+                       || request.resource.contentType.matches('audio/.*'));
+    }
+    
+    // Правила для аватаров пользователей
+    match /users/{userId}/{fileName} {
+      // Разрешить чтение всем
+      allow read: if true;
+      
+      // Разрешить запись только владельцу
+      allow write: if request.auth != null
+                   && request.auth.uid == userId
+                   && request.resource.size < 5 * 1024 * 1024 // Макс 5MB
+                   && request.resource.contentType.matches('image/.*');
+    }
+  }
+}
