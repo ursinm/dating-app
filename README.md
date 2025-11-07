@@ -1,163 +1,122 @@
-# 💜 Dating App - Firebase Edition
+# Dating App
 
-> Современное веб-приложение для знакомств с системой подбора по совместимости на базе **Firebase**.
+Современное мобильное приложение для знакомств с функционалом мэтчинга, чатов и push-уведомлений.
 
-![React](https://img.shields.io/badge/React-18-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Firebase](https://img.shields.io/badge/Firebase-12.4-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
+## 🚀 Возможности
 
----
+- ✅ **Авторизация и регистрация** через Firebase Auth
+- ✅ **Профили пользователей** с фото и описанием
+- ✅ **Система мэтчинга** - свайпы и лайки
+- ✅ **Чат с сообщениями** - текст, фото, голосовые сообщения
+- ✅ **Ответы на сообщения** - цитирование сообщений
+- ✅ **Удаление сообщений и чатов** свайпом
+- ✅ **Счетчик непрочитанных сообщений**
+- ✅ **Push-уведомления** для новых сообщений и мэтчей
+- ✅ **Онлайн статус** пользователей
+- ✅ **Настройки уведомлений** и профиля
 
-## 🚀 Быстрый старт
+## 📱 Технологии
 
-```bash
-# Клонируйте репозиторий
-git clone https://github.com/ursinm/dating-xx.git
-cd dating-xx/web
-
-# Установите зависимости
-npm install
-
-# Запустите приложение
-npm run dev
-```
-
-Приложение откроется на `http://localhost:5173`
-
-## ✨ Основные возможности
-
-- ✅ **Регистрация и авторизация** через Firebase Authentication
-- ✅ **Тест на совместимость** (10 вопросов) для умного подбора
-- ✅ **Умный подбор партнеров** на основе общих ценностей
-- ✅ **Система лайков и мэтчей** в реальном времени
-- ✅ **Чаты в реальном времени** с поддержкой медиа
-- ✅ **Профили пользователей** с фото и информацией
-- ✅ **Адаптивный дизайн** для всех устройств
-
-## 🛠️ Технологии
-
-### Frontend
-- **React 18** - современный UI фреймворк
-- **TypeScript** - типизированный JavaScript
-- **Vite** - быстрый сборщик и dev-сервер
-- **Tailwind CSS** - utility-first CSS
-- **React Router** - маршрутизация
-- **Framer Motion** - анимации
-
-### Backend & Database
-- **Firebase 12.4.0** - Backend-as-a-Service
-- **Firestore** - NoSQL база данных
-- **Firebase Authentication** - аутентификация
-- **Firebase Storage** - хранение медиафайлов
-
-## 🔥 Настройка Firebase
-
-1. **Создайте Firestore Database:**
-   - Откройте [Firebase Console](https://console.firebase.google.com/)
-   - Выберите проект `dating-main-14a43`
-   - Включите **Firestore Database** (в тестовом режиме)
-
-2. **Запустите приложение:**
-   ```bash
-   npm run dev
-   ```
-
-3. **Автоматическая инициализация:**
-   - Приложение автоматически создаст все коллекции и тестовые данные
-   - Подробнее см. `AUTO_INIT_GUIDE.md`
+- **Flutter** - кроссплатформенная разработка (Android)
+- **Firebase** - авторизация, база данных, хранение, уведомления
+  - Firebase Auth
+  - Cloud Firestore
+  - Firebase Storage
+  - Firebase Cloud Messaging
+  - Cloud Functions
 
 ## 📁 Структура проекта
 
 ```
-dating-xx/
-├── web/                          # React веб-приложение
-│   ├── src/
-│   │   ├── components/          # React компоненты
-│   │   ├── pages/               # Страницы приложения
-│   │   ├── lib/                 # Утилиты и API
-│   │   │   ├── firebase.ts      # Firebase конфигурация
-│   │   │   ├── api.ts           # Firestore API
-│   │   │   ├── auth.ts          # Управление сессией
-│   │   │   └── compatibility.ts # Расчет совместимости
-│   │   ├── types/               # TypeScript типы
-│   │   └── hooks/               # React хуки
-│   ├── public/                  # Статические файлы
-│   └── package.json
-├── firestore.rules               # Правила безопасности Firestore
-├── firestore.indexes.json        # Индексы для запросов
-└── ДОКУМЕНТАЦИЯ.md              # Полная документация (600+ строк)
+dating-main/
+├── mobile/                 # Flutter приложение
+│   ├── lib/
+│   │   ├── screens/       # Экраны приложения
+│   │   ├── services/      # Сервисы (API, Auth, Notifications)
+│   │   ├── models/        # Модели данных
+│   │   ├── widgets/       # Виджеты
+│   │   └── theme/         # Тема приложения
+│   ├── functions/         # Cloud Functions для уведомлений
+│   └── android/           # Android конфигурация
+└── web/                   # Web версия (опционально)
 ```
+
+## 🛠️ Установка и запуск
+
+### Требования
+
+- Flutter SDK (>=3.0.0)
+- Android Studio / VS Code
+- Firebase проект с настроенными сервисами
+- Android эмулятор или устройство
+
+### Шаги установки
+
+1. **Клонируйте репозиторий:**
+   ```bash
+   git clone git@github.com:ursinm/dating-app.git
+   cd dating-app
+   ```
+
+2. **Установите зависимости:**
+   ```bash
+   cd mobile
+   flutter pub get
+   ```
+
+3. **Настройте Firebase:**
+   - Создайте проект в Firebase Console
+   - Добавьте Android приложение
+   - Скачайте `google-services.json` и поместите в `android/app/`
+   - Обновите `firebase_options.dart` с вашими ключами
+
+4. **Обновите план Firebase до Blaze** (для Cloud Functions):
+   - Перейдите в Firebase Console → Usage & Billing
+   - Обновите план до Blaze (pay-as-you-go)
+
+5. **Разверните Cloud Functions:**
+   ```bash
+   cd mobile
+   firebase deploy --only functions
+   ```
+
+6. **Запустите приложение:**
+   ```bash
+   flutter run
+   ```
 
 ## 📚 Документация
 
-| Файл | Описание |
-|------|----------|
-| **ДОКУМЕНТАЦИЯ.md** | Полное руководство по проекту (688 строк) |
-| **AUTO_INIT_GUIDE.md** | Автоматическая инициализация БД |
-| **firebase-setup.md** | Настройка Firebase и Firestore |
-| **MIGRATION_TO_FIREBASE.md** | Детали миграции с Supabase |
-| **GITHUB_UPLOAD_INSTRUCTIONS.md** | Инструкция по загрузке на GitHub |
+- [Настройка уведомлений](mobile/NOTIFICATIONS_SETUP.md)
+- [Инструкция по развертыванию](mobile/DEPLOY_INSTRUCTIONS.md)
+- [Статус функций](mobile/FUNCTIONS_READY.md)
 
-## 🗄️ База данных (Firestore)
+## 🔧 Конфигурация
 
-### Коллекции:
-1. **users** - пользователи (профили, фото, предпочтения)
-2. **questions** - вопросы теста на совместимость
-3. **answer_opinions** - варианты ответов
-4. **user_answers** - ответы пользователей на вопросы
-5. **likes** - лайки пользователей
-6. **matches** - мэтчи (взаимные лайки)
-7. **chats** - чаты между пользователями
-8. **messages** - сообщения в чатах
+### Firebase Cloud Messaging
 
-## 🎯 Скриншоты
+Для работы push-уведомлений:
+1. Включите Cloud Messaging в Firebase Console
+2. Настройте разрешения в `AndroidManifest.xml`
+3. Разверните Cloud Functions (см. `DEPLOY_INSTRUCTIONS.md`)
 
-_Добавьте скриншоты вашего приложения здесь_
+### Cloud Functions
 
-## 📝 Доступные команды
+Функции автоматически отправляют уведомления:
+- `sendMessageNotification` - при новом сообщении
+- `sendMatchNotification` - при новом мэтче
 
-```bash
-# Разработка
-npm run dev
+## 📝 Лицензия
 
-# Сборка для продакшена
-npm run build
+Этот проект создан в учебных целях.
 
-# Предпросмотр продакшн сборки
-npm run preview
+## 👥 Авторы
 
-# Линтинг кода
-npm run lint
-```
-
-## 🤝 Вклад в проект
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 Лицензия
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👨‍💻 Автор
-
-- **ursinm** - [GitHub](https://github.com/ursinm)
+Разработано в рамках учебного проекта.
 
 ## 🙏 Благодарности
 
-- Firebase team за отличную платформу
-- React community за прекрасные инструменты
-- Всем контрибьюторам проекта
+- Flutter команде за отличный фреймворк
+- Firebase за надежную инфраструктуру
+- Сообществу разработчиков за поддержку
 
----
-
-**Версия**: 2.0 (Firebase Edition)  
-**Последнее обновление**: 2025
-
-💜 Made with love using React & Firebase
